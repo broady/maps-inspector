@@ -1,0 +1,14 @@
+{
+  "name": "Maps API Inspector",
+  "version": "1.0",
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["hook.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

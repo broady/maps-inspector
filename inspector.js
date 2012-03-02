@@ -27,8 +27,10 @@
             oldMap._overlays = oldMap._overlays.filter(notId.bind(null, id));
           }
           var newMap = that.getMap();
-          newMap._overlays = newMap._overlays || [];
-          newMap._overlays.push(that);
+          if (newMap) {
+            newMap._overlays = newMap._overlays || [];
+            newMap._overlays.push(that);
+          }
         });
       }
       old.apply(that, arguments);
@@ -48,9 +50,10 @@
       }
       setMap.apply(this, arguments);
       var newMap = this.getMap();
-
-      newMap._overlays = newMap._overlays || [];
-      newMap._overlays.push(this);
+      if (newMap) {
+        newMap._overlays = newMap._overlays || [];
+        newMap._overlays.push(this);
+      }
     };
   }
 

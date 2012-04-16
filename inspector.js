@@ -27,6 +27,10 @@
             oldMap._overlays = oldMap._overlays.filter(notId.bind(null, id));
           }
           var newMap = that.getMap();
+          if (!newMap) {
+            return;
+          }
+          setId(newMap);
           newMap._overlays = newMap._overlays || [];
           newMap._overlays.push(that);
         });
@@ -48,7 +52,10 @@
       }
       setMap.apply(this, arguments);
       var newMap = this.getMap();
-
+      if (!newMap) {
+        return;
+      }
+      setId(newMap);
       newMap._overlays = newMap._overlays || [];
       newMap._overlays.push(this);
     };
